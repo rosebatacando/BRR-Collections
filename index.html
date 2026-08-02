@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bangcogon — The Oslob Collection</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap');
+
+:root{
+  --deep-teal:#0F3D3E;
+  --mid-teal:#1F5F5C;
+  --seafoam:#7FB3AC;
+  --sand:#F4EEDF;
+  --sand-dark:#E9DFC6;
+  --coral:#E67E4D;
+  --coral-dark:#C6602F;
+  --driftwood:#8C6F52;
+  --ink:#1C2825;
+  --white:#FFFFFF;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+
+body{
+  background:var(--sand);
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+.wrap{max-width:1180px; margin:0 auto; padding:0 40px;}
+
+/* ---------- WAVE DIVIDER (signature element) ---------- */
+.wave-divider{width:100%; display:block; line-height:0;}
+.wave-divider svg{width:100%; height:auto; display:block;}
+
+/* ---------- HERO ---------- */
+.hero{
+  background:radial-gradient(120% 140% at 20% 0%, #14504E 0%, var(--deep-teal) 55%, #0A2C2D 100%);
+  color:var(--sand);
+  padding:90px 0 60px;
+  position:relative;
+}
+.hero-inner{
+  display:flex; align-items:center; justify-content:space-between; gap:60px;
+}
+.hero-eyebrow{
+  font-family:'Caveat', cursive; font-size:28px; color:var(--coral); font-weight:700;
+  display:flex; align-items:center; gap:10px; margin-bottom:6px;
+}
+.hero h1{
+  font-family:'Fraunces', serif; font-weight:700; font-size:clamp(44px, 6vw, 74px);
+  line-height:0.98; letter-spacing:-0.01em; margin-bottom:22px;
+}
+.hero h1 em{font-style:italic; font-weight:500; color:var(--seafoam);}
+.hero p.sub{
+  font-size:18px; line-height:1.6; max-width:440px; color:#D8E4E0; margin-bottom:30px;
+}
+.hero-tags{display:flex; gap:10px; flex-wrap:wrap;}
+.tag{
+  font-size:13px; letter-spacing:0.04em; text-transform:uppercase; font-weight:600;
+  border:1px solid rgba(244,238,223,0.35); padding:8px 16px; border-radius:100px; color:#D8E4E0;
+}
+.hero-mark{
+  flex-shrink:0; width:280px; height:280px; position:relative;
+}
+@media (max-width:820px){
+  .hero-inner{flex-direction:column; align-items:flex-start;}
+  .hero-mark{width:200px; height:200px; align-self:center;}
+}
+
+/* ---------- LOGO LOCKUP ---------- */
+.lockup{
+  border:1.5px solid rgba(244,238,223,0.5); border-radius:50%;
+  width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+  position:relative;
+}
+.lockup-inner{text-align:center;}
+.lockup-brand{font-family:'Fraunces', serif; font-weight:700; font-size:22px; letter-spacing:0.02em; color:var(--sand);}
+.lockup-sub{font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--seafoam); margin-top:4px;}
+.lockup-place{font-family:'Caveat',cursive; font-size:16px; color:var(--coral); margin-top:8px;}
+
+/* ---------- SECTION SHELL ---------- */
+section.line{padding:80px 0 40px;}
+.section-head{
+  display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:44px; gap:24px; flex-wrap:wrap;
+}
+.eyebrow{
+  display:flex; align-items:center; gap:8px; font-size:13px; letter-spacing:0.14em;
+  text-transform:uppercase; font-weight:700; color:var(--coral-dark); margin-bottom:10px;
+}
+.eyebrow svg{width:18px; height:18px;}
+.section-head h2{
+  font-family:'Fraunces', serif; font-weight:600; font-size:clamp(30px,4vw,42px); color:var(--deep-teal);
+}
+.section-note{font-size:14.5px; color:var(--driftwood); max-width:340px; line-height:1.55;}
+
+/* ---------- GRID ---------- */
+.grid{display:grid; gap:26px;}
+.grid-4{grid-template-columns:repeat(4,1fr);}
+.grid-3{grid-template-columns:repeat(3,1fr);}
+@media (max-width:980px){.grid-4{grid-template-columns:repeat(2,1fr);} .grid-3{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:600px){.grid-4,.grid-3{grid-template-columns:1fr;}}
+
+/* ---------- CARD ---------- */
+.card{
+  background:var(--white); border-radius:18px; overflow:hidden;
+  box-shadow:0 1px 2px rgba(15,61,62,0.06), 0 12px 28px -18px rgba(15,61,62,0.35);
+  display:flex; flex-direction:column;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.card:hover{transform:translateY(-4px); box-shadow:0 1px 2px rgba(15,61,62,0.08), 0 20px 34px -16px rgba(15,61,62,0.4);}
+.card-art{
+  aspect-ratio:4/5; display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+}
+.card-art img{width:100%; height:100%; object-fit:cover; object-position:center top; display:block;}
+.card-art .art-tag{
+  position:absolute; top:12px; left:12px; background:rgba(15,61,62,0.82); color:#F4EEDF;
+  font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700;
+  padding:5px 10px; border-radius:100px;
+}
+.grid-5{grid-template-columns:repeat(5,1fr);}
+@media (max-width:1080px){.grid-5{grid-template-columns:repeat(3,1fr);}}
+@media (max-width:600px){.grid-5{grid-template-columns:repeat(2,1fr);}}
+.card-body{padding:18px 20px 22px;}
+.card-scent{font-family:'Caveat',cursive; font-weight:700; font-size:15px; color:var(--coral-dark); margin-bottom:2px;}
+.card-name{font-family:'Fraunces', serif; font-weight:600; font-size:19px; color:var(--deep-teal); line-height:1.2;}
+.card-desc{font-size:13.5px; color:var(--driftwood); margin-top:6px; line-height:1.5;}
+.card-foot{
+  display:flex; align-items:center; justify-content:space-between; margin-top:14px;
+  padding-top:14px; border-top:1px dashed var(--sand-dark);
+}
+.price{font-family:'Fraunces',serif; font-weight:700; font-size:17px; color:var(--ink);}
+.price small{font-family:'Inter'; font-weight:500; font-size:11px; color:var(--driftwood); display:block;}
+.dot{width:9px; height:9px; border-radius:50%;}
+
+/* ---------- SET CALLOUT ---------- */
+.set-band{
+  margin:60px 0 0; background:var(--deep-teal); border-radius:26px; color:var(--sand);
+  padding:52px 56px; display:flex; align-items:center; justify-content:space-between; gap:40px;
+  position:relative; overflow:hidden;
+}
+.set-band::after{
+  content:''; position:absolute; right:-60px; top:-60px; width:260px; height:260px; border-radius:50%;
+  background:radial-gradient(circle, rgba(230,126,77,0.35), transparent 70%);
+}
+.set-band h3{font-family:'Fraunces',serif; font-weight:600; font-size:30px; margin-bottom:10px; max-width:420px;}
+.set-band p{font-size:14.5px; color:#CFE0DB; max-width:420px; line-height:1.6;}
+.set-price{
+  background:var(--coral); color:var(--white); border-radius:16px; padding:22px 30px; text-align:center; flex-shrink:0;
+  z-index:1;
+}
+.set-price .amt{font-family:'Fraunces',serif; font-weight:700; font-size:30px;}
+.set-price .label{font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.9; margin-top:2px;}
+@media (max-width:760px){.set-band{flex-direction:column; text-align:center; padding:40px 28px;} .set-band h3,.set-band p{max-width:100%;}}
+
+/* ---------- FOOTER ---------- */
+footer{margin-top:90px; padding:46px 0 60px; border-top:1px solid var(--sand-dark);}
+.foot-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+.foot-brand{font-family:'Fraunces',serif; font-weight:600; font-size:17px; color:var(--deep-teal);}
+.foot-note{font-size:12.5px; color:var(--driftwood);}
+
+/* ---------- SMALL ITEMS ROW ---------- */
+.mini-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:18px;}
+@media (max-width:900px){.mini-grid{grid-template-columns:repeat(3,1fr);}}
+@media (max-width:520px){.mini-grid{grid-template-columns:repeat(2,1fr);}}
+.mini-card{background:var(--white); border-radius:14px; padding:18px 14px 16px; text-align:center;
+  box-shadow:0 8px 20px -14px rgba(15,61,62,0.4);}
+.mini-card svg{width:56px; height:56px;}
+.mini-name{font-size:12.5px; font-weight:600; color:var(--deep-teal); margin-top:8px;}
+.mini-price{font-size:12px; color:var(--coral-dark); font-weight:700; margin-top:2px;}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <div class="hero-eyebrow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M2 12c3-4 6-4 9 0s6 4 9 0" stroke="#E67E4D" stroke-width="2" stroke-linecap="round"/></svg>
+        Bangcogon Resort &amp; Restaurant
+      </div>
+      <h1>The Oslob<br><em>Collection</em></h1>
+      <p class="sub">A line of candles, totes, apparel, and keepsakes built around one idea: every scent, print, and charm should trace back to a real moment on this coastline — the sunrise boat ride, the swim, the sandbar.</p>
+      <div class="hero-tags">
+        <span class="tag">Candles</span>
+        <span class="tag">Totes</span>
+        <span class="tag">Apparel</span>
+        <span class="tag">Keepsakes</span>
+      </div>
+    </div>
+    <div class="hero-mark">
+      <div class="lockup">
+        <div class="lockup-inner">
+          <div class="lockup-brand">BANGCOGON</div>
+          <div class="lockup-sub">Resort &amp; Restaurant</div>
+          <div class="lockup-place">Oslob, Cebu</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="wave-divider">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C240,60 480,0 720,20 C960,40 1200,0 1440,20 L1440,0 L0,0 Z" fill="#0F3D3E"/></svg>
+</div>
+
+<div class="wrap">
+
+<!-- ============ CANDLES ============ -->
+<section class="line" id="candles">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3c0 3-3 4-3 7a3 3 0 006 0c0-3-3-4-3-7z" stroke="#C6602F" stroke-width="1.6"/></svg>
+        Candle Collection
+      </div>
+      <h2>Scents of Oslob</h2>
+    </div>
+    <p class="section-note">Each jar finished with a jute tie and a dolphin charm — the scent names follow an actual day on the water, sunrise to sandbar.</p>
+  </div>
+
+  <div class="grid grid-5">
+
+    <!-- Candle 1 -->
+    <div class="card">
+      <div class="card-art">
+        <span class="art-tag">Actual product</span>
+        <img src="assets/candle-concept1-dolphincove.png" alt="Dolphin Cove Spray candle">
+      </div>
+      <div class="card-body">
+        <div class="card-scent">Concept No. 1</div>
+        <div class="card-name">Dolphin Cove Spray</div>
+        <div class="card-desc">Sea salt, white musk &amp; a hint of citrus — the boat ride out to Tan-awan.</div>
+        <div class="card-foot">
+          <div class="price">₱450<small>10oz jar</small></div>
+          <div class="dot" style="background:#7FB3AC;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Candle 2 -->
+    <div class="card">
+      <div class="card-art">
+        <span class="art-tag">Actual product</span>
+        <img src="assets/candle-concept2-driftwood.png" alt="Driftwood &amp; Saltwater candle">
+      </div>
+      <div class="card-body">
+        <div class="card-scent">Concept No. 2</div>
+        <div class="card-name">Driftwood &amp; Saltwater</div>
+        <div class="card-desc">Cedarwood, driftwood &amp; ambergris — weathered outrigger boats at rest.</div>
+        <div class="card-foot">
+          <div class="price">₱480<small>10oz jar</small></div>
+          <div class="dot" style="background:#C98A4E;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Candle 3 -->
+    <div class="card">
+      <div class="card-art">
+        <span class="art-tag">Actual product</span>
+        <img src="assets/candle-concept3-underwater.png" alt="Underwater Serenity &amp; Coral Scent candle">
+      </div>
+      <div class="card-body">
+        <div class="card-scent">Concept No. 3</div>
+        <div class="card-name">Underwater Serenity &amp; Coral</div>
+        <div class="card-desc">Blue lotus, marine notes &amp; soft floral — the moment you're in the water.</div>
+        <div class="card-foot">
+          <div class="price">₱480<small>10oz jar</small></div>
+          <div class="dot" style="background:#5C9891;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Candle 4 -->
+    <div class="card">
+      <div class="card-art">
+        <span class="art-tag">Actual product</span>
+        <img src="assets/candle-concept4-oceanwave.png" alt="Oslob Ocean Wave candle">
+      </div>
+      <div class="card-body">
+        <div class="card-scent">Concept No. 4 — Signature</div>
+        <div class="card-name">Oslob Ocean Wave</div>
+        <div class="card-desc">Sea mist, coconut water &amp; warm sand — the brand's hero scent.</div>
+        <div class="card-foot">
+          <div class="price">₱520<small>10oz jar</small></div>
+          <div class="dot" style="background:#E67E4D;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Candle 5 -->
+    <div class="card">
+      <div class="card-art">
+        <span class="art-tag">Actual product</span>
+        <img src="assets/candle-concept4-oceanwave-alt.png" alt="Oslob, Cebu label variant candle">
+      </div>
+      <div class="card-body">
+        <div class="card-scent">Concept No. 4 — Traveler's Label</div>
+        <div class="card-name">Oslob, Cebu Edition</div>
+        <div class="card-desc">Same Ocean Wave scent, location-only label — a simpler pasalubong-style pack.</div>
+        <div class="card-foot">
+          <div class="price">₱520<small>10oz jar</small></div>
+          <div class="dot" style="background:#7FB3AC;"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="wave-divider">
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none"><path d="M0,14 C240,34 480,0 720,14 C960,28 1200,0 1440,14 L1440,40 L0,40 Z" fill="#7FB3AC" opacity="0.35"/></svg>
+</div>
+
+<!-- ============ TOTES ============ -->
+<section class="line" id="totes">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="9" width="16" height="12" rx="2" stroke="#C6602F" stroke-width="1.6"/><path d="M8 9V7a4 4 0 018 0v2" stroke="#C6602F" stroke-width="1.6"/></svg>
+        Tote Collection
+      </div>
+      <h2>Carry the Coast</h2>
+    </div>
+    <p class="section-note">The "Marine Collection" jute tote series — one design per Oslob experience, so each bag doubles as a memory of a specific stop on the trip.</p>
+  </div>
+
+  <div class="grid grid-5">
+
+    <!-- Tote 1 -->
+    <div class="card">
+      <div class="card-art">
+        <span class="art-tag">Actual product</span>
+        <img src="assets/tote-whaleshark.png" alt="Oslob Whale Shark Encounter tote">
+      </div>
+      <div class="card-body">
+        <div class="card-scent">Marine Collection</div>
+        <div class="card-name">Whale Shark Encounter</div>
+        <div class="card-desc">The signature stop — a butanding gliding beneath the boats, in navy &amp; teal.</div>
+        <div class="card-foot">
+          <div class="price">₱420<small>jute tote</small></div>
+          <div class="dot" style="background:#1F5F5C;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tote 2 -->
+    <div class="card">
+      <div class="card-art">
+        <span class="art-tag">Actual product</span>
+        <img src="assets/tote-tumalogfalls.png" alt="Tumalog Falls Exploration tote">
+      </div>
+      <div class="card-body">
+        <div class="card-scent">Marine Collection</div>
+        <div class="card-name">Tumalog Falls Exploration</div>
+        <div class="card-desc">The waterfall side trip — green handles echo the jungle canopy.</div>
+        <div class="card-foot">
+          <div class="price">₱420<small>jute tote</small></div>
+          <div class="dot" style="background:#5C9891;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tote 3 -->
+    <div class="card">
+      <div class="card-art">
+        <span class="art-tag">Actual product</span>
+        <img src="assets/tote-sumilon.png" alt="Sumilon Island Experience tote">
+      </div>
+      <div class="card-body">
+        <div class="card-scent">Marine Collection</div>
+        <div class="card-name">Sumilon Island Experience</div>
+        <div class="card-desc">The sandbar island-hop — turquoise water and a lone outrigger boat.</div>
+        <div class="card-foot">
+          <div class="price">₱420<small>jute tote</small></div>
+          <div class="dot" style="background:#7FB3AC;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tote 4 -->
+    <div class="card">
+      <div class="card-art">
+        <span class="art-tag">Actual product</span>
+        <img src="assets/tote-dolphinreef.png" alt="Dolphin Reef tote">
+      </div>
+      <div class="card-body">
+        <div class="card-scent">Marine Collection</div>
+        <div class="card-name">Dolphin Reef</div>
+        <div class="card-desc">A jumping dolphin over a coral band — the everyday, grab-anywhere design.</div>
+        <div class="card-foot">
+          <div class="price">₱420<small>jute tote</small></div>
+          <div class="dot" style="background:#1F5F5C;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tote 5 -->
+    <div class="card">
+      <div class="card-art">
+        <span class="art-tag">Actual product</span>
+        <img src="assets/tote-sunsetshore.png" alt="Sunset Shore tote">
+      </div>
+      <div class="card-body">
+        <div class="card-scent">Marine Collection</div>
+        <div class="card-name">Sunset Shore</div>
+        <div class="card-desc">Shells down the strap, a couple walking the shoreline at golden hour.</div>
+        <div class="card-foot">
+          <div class="price">₱420<small>jute tote</small></div>
+          <div class="dot" style="background:#E67E4D;"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="wave-divider">
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none"><path d="M0,14 C240,34 480,0 720,14 C960,28 1200,0 1440,14 L1440,40 L0,40 Z" fill="#E67E4D" opacity="0.18"/></svg>
+</div>
+
+<!-- ============ TEES ============ -->
+<section class="line" id="tees">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M8 4l4 3 4-3 4 4-3 3v10H7V11L4 8z" stroke="#C6602F" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        Apparel Line
+      </div>
+      <h2>Wear the Water</h2>
+    </div>
+    <p class="section-note">Three directions worth testing side by side — a quiet badge, a statement back-print, and a passport-stamp graphic.</p>
+  </div>
+
+  <div class="grid grid-3">
+
+    <!-- Tee 1 -->
+    <div class="card">
+      <div class="card-art" style="background:linear-gradient(180deg,#F6F2E6,#EDE4CC);">
+        <svg width="150" height="160" viewBox="0 0 150 160">
+          <path d="M45 20 L60 12 Q75 22 90 12 L105 20 L112 40 L98 46 L98 130 L52 130 L52 46 L38 40 Z" fill="#FBF8EF" stroke="#DCD2B6" stroke-width="1.6"/>
+          <circle cx="75" cy="52" r="13" fill="none" stroke="#1F5F5C" stroke-width="1.4"/>
+          <path d="M68 52c1-4 5-6 7-6s6 2 7 6-3 8-7 8-8-4-7-8z" fill="#7FB3AC" opacity="0.7"/>
+          <text x="75" y="72" font-family="Inter" font-size="4.2" fill="#8C6F52" text-anchor="middle" letter-spacing="1">BANGCOGON · OSLOB</text>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-scent">Direction A</div>
+        <div class="card-name">Minimalist Badge Tee</div>
+        <div class="card-desc">Small left-chest emblem, whale shark silhouette, quiet and wearable daily.</div>
+        <div class="card-foot">
+          <div class="price">₱320<small>cotton tee</small></div>
+          <div class="dot" style="background:#7FB3AC;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tee 2 -->
+    <div class="card">
+      <div class="card-art" style="background:linear-gradient(180deg,#EAF4F1,#DCEDE8);">
+        <svg width="150" height="160" viewBox="0 0 150 160">
+          <path d="M45 20 L60 12 Q75 22 90 12 L105 20 L112 40 L98 46 L98 130 L52 130 L52 46 L38 40 Z" fill="#F4FBF9" stroke="#B9DDD6" stroke-width="1.6"/>
+          <path d="M55 60 Q75 50 95 60" stroke="#1F5F5C" stroke-width="1.3" fill="none"/>
+          <path d="M55 72 Q75 62 95 72" stroke="#5C9891" stroke-width="1.3" fill="none"/>
+          <path d="M55 84 Q75 74 95 84" stroke="#1F5F5C" stroke-width="1.3" fill="none" opacity="0.6"/>
+          <ellipse cx="75" cy="76" rx="16" ry="6" fill="#DCE7E4" stroke="#5C9891" stroke-width="1.2"/>
+          <path d="M91 76l6-3-1 3 1 3z" fill="#5C9891"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-scent">Direction B</div>
+        <div class="card-name">Full-Back Reef Scene</div>
+        <div class="card-desc">Coral reef and whale shark across the back, small logo on the chest — the statement piece.</div>
+        <div class="card-foot">
+          <div class="price">₱420<small>cotton tee</small></div>
+          <div class="dot" style="background:#5C9891;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tee 3 -->
+    <div class="card">
+      <div class="card-art" style="background:linear-gradient(180deg,#FBF3E7,#F2E2C6);">
+        <svg width="150" height="160" viewBox="0 0 150 160">
+          <path d="M45 20 L60 12 Q75 22 90 12 L105 20 L112 40 L98 46 L98 130 L52 130 L52 46 L38 40 Z" fill="#FDF8EC" stroke="#E4D6B4" stroke-width="1.6"/>
+          <circle cx="75" cy="70" r="20" fill="none" stroke="#C6602F" stroke-width="1.3" stroke-dasharray="2 2"/>
+          <path d="M62 74a13 4 0 0026 0" stroke="#1F5F5C" stroke-width="1.3" fill="none"/>
+          <circle cx="75" cy="64" r="5" fill="#E67E4D" opacity="0.8"/>
+          <text x="75" y="98" font-family="Caveat" font-weight="700" font-size="9" fill="#8C6F52" text-anchor="middle">Oslob, Cebu</text>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-scent">Direction C</div>
+        <div class="card-name">Travel-Stamp Tee</div>
+        <div class="card-desc">Passport-stamp graphic with sun, roofline &amp; handwritten place name.</div>
+        <div class="card-foot">
+          <div class="price">₱350<small>cotton tee</small></div>
+          <div class="dot" style="background:#E67E4D;"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="wave-divider">
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none"><path d="M0,14 C240,34 480,0 720,14 C960,28 1200,0 1440,14 L1440,40 L0,40 Z" fill="#8C6F52" opacity="0.14"/></svg>
+</div>
+
+<!-- ============ SMALL ITEMS ============ -->
+<section class="line" id="keepsakes">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#C6602F" stroke-width="1.6"/><circle cx="12" cy="12" r="2.4" fill="#C6602F"/></svg>
+        Keepsakes
+      </div>
+      <h2>Small Enough to Pack</h2>
+    </div>
+    <p class="section-note">The impulse-buy tier — every candle, tote, or tee customer adds one of these at checkout.</p>
+  </div>
+
+  <div class="mini-grid">
+
+    <div class="mini-card">
+      <svg viewBox="0 0 60 60"><path d="M30 44c-6-8-16-16-16-25a10 10 0 0120 0 10 10 0 0120 0c0 9-10 17-16 25a5 3 0 01-8 0z" fill="none" stroke="#1F5F5C" stroke-width="2"/><circle cx="30" cy="19" r="2" fill="#E67E4D"/></svg>
+      <div class="mini-name">Dolphin Keychain</div>
+      <div class="mini-price">₱90</div>
+    </div>
+
+    <div class="mini-card">
+      <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="20" fill="none" stroke="#E67E4D" stroke-width="2"/><path d="M18 32c4-6 8-6 12 0s8 6 12 0" stroke="#1F5F5C" stroke-width="2" fill="none"/></svg>
+      <div class="mini-name">Wave Fridge Magnet</div>
+      <div class="mini-price">₱70</div>
+    </div>
+
+    <div class="mini-card">
+      <svg viewBox="0 0 60 60"><ellipse cx="30" cy="32" rx="16" ry="7" fill="none" stroke="#5C9891" stroke-width="2"/><path d="M46 32l7-4-1 4 1 4z" fill="#5C9891"/><circle cx="20" cy="30" r="1.6" fill="#1F5F5C"/></svg>
+      <div class="mini-name">Whale Shark Magnet</div>
+      <div class="mini-price">₱75</div>
+    </div>
+
+    <div class="mini-card">
+      <svg viewBox="0 0 60 60"><path d="M20 42V22a10 10 0 0120 0v20" stroke="#8C6F52" stroke-width="2" fill="none"/><path d="M14 22h32" stroke="#8C6F52" stroke-width="2"/><path d="M14 22l3-6h26l3 6" stroke="#8C6F52" stroke-width="2" fill="none"/></svg>
+      <div class="mini-name">Sun &amp; Roofline Magnet</div>
+      <div class="mini-price">₱70</div>
+    </div>
+
+    <div class="mini-card">
+      <svg viewBox="0 0 60 60"><rect x="16" y="16" width="28" height="28" rx="4" fill="none" stroke="#E67E4D" stroke-width="2"/><circle cx="30" cy="30" r="2" fill="#1F5F5C"/><circle cx="10" cy="30" r="3" fill="none" stroke="#8C6F52" stroke-width="1.6"/></svg>
+      <div class="mini-name">Resin Charm Keychain</div>
+      <div class="mini-price">₱110</div>
+    </div>
+
+    <div class="mini-card">
+      <svg viewBox="0 0 60 60"><rect x="22" y="18" width="16" height="24" rx="6" fill="none" stroke="#1F5F5C" stroke-width="2"/><rect x="18" y="14" width="24" height="8" rx="3" fill="none" stroke="#8C6F52" stroke-width="1.6"/><circle cx="10" cy="26" r="2.6" fill="none" stroke="#8C6F52" stroke-width="1.4"/></svg>
+      <div class="mini-name">Mini Candle-Jar Charm</div>
+      <div class="mini-price">₱95</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ BUILD-A-SET BAND ============ -->
+<div class="set-band">
+  <div>
+    <h3>Build Your Oslob Set</h3>
+    <p>Pick the experience that matched your trip — Whale Shark, Tumalog Falls, or Sumilon Island — and take home the matching tote, candle, and keychain in one bundle.</p>
+  </div>
+  <div class="set-price">
+    <div class="amt">₱850</div>
+    <div class="label">Candle + Tote + Keychain</div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">BANGCOGON Resort &amp; Restaurant</div>
+    <div class="foot-note">Product line mockup — pricing shown in PHP, for internal review &amp; supplier quoting only.</div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
